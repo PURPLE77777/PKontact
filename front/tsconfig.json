@@ -1,0 +1,23 @@
+{
+	"extends": "expo/tsconfig.base",
+	"compilerOptions": {
+		"strict": true,
+		"noImplicitAny": false,
+		"useDefineForClassFields": true,
+		"baseUrl": "./app",
+		"paths": {
+			"@constants/*": ["./constants/*"],
+			"@screens/*": ["./screens/*"],
+			"@hooks/*": ["./hooks/*"],
+			"@navigation/*": ["./navigation/*"],
+			"@api/*": ["./api/*"],
+			"@providers/*": ["./providers/*"],
+			"@services/*": ["./services/*"],
+			"@store/*": ["./store/*"],
+			"@assets/*": ["./assets"],
+			"@ui/*": ["./ui/*"],
+			"@utils/*": ["./utils/*"],
+			"@AppTypes/*": ["./types/*"]
+		}
+	}
+}
