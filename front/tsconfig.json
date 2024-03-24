@@ -3,8 +3,10 @@
 	"compilerOptions": {
 		"strict": true,
 		"noImplicitAny": false,
-		"useDefineForClassFields": true,
 		"baseUrl": "./app",
+		"useDefineForClassFields": true,
+		"typeRoots": ["./node_modules/@types"],
+		"types": ["@types/styled-components-react-native"],
 		"paths": {
 			"@constants/*": ["./constants/*"],
 			"@screens/*": ["./screens/*"],

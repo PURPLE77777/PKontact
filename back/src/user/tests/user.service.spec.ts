@@ -23,8 +23,7 @@ describe('UserService', () => {
 	}
 
 	const updatedData: UpdateUserDto = {
-		username: 'ChangeName',
-		password: 'updatedPassword'
+		username: 'ChangeName'
 	}
 
 	beforeAll(async () => {
@@ -53,7 +52,9 @@ describe('UserService', () => {
 		const data = await userService.create(user)
 
 		expect(data).toMatchObject({
-			...user,
+			id: user.id,
+			username: user.username,
+			email: user.email,
 			profile: {
 				...profile
 			}
@@ -70,7 +71,9 @@ describe('UserService', () => {
 	it('update user', async () => {
 		const data = await userService.update(user.id, updatedData)
 		expect(data).toMatchObject({
-			...user,
+			id: user.id,
+			username: user.username,
+			email: user.email,
 			...updatedData,
 			profile: {
 				...profile
@@ -82,7 +85,9 @@ describe('UserService', () => {
 		const data = await userService.remove(user.id)
 
 		expect(data).toMatchObject({
-			...user,
+			id: user.id,
+			username: user.username,
+			email: user.email,
 			...updatedData,
 			profile: {
 				...profile

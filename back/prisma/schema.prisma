@@ -27,6 +27,7 @@ enum Role {
 
 model Profile {
   conversations         ConversationsOnProfiles[]
+  avatar                String?
   role                  Role                      @default(USER)
   user                  User                      @relation(references: [id], fields: [userId], onDelete: Cascade)
   userId                String                    @unique @map("user_id")

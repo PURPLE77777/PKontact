@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common'
 import { Prisma } from '@prisma/client'
+import { hash } from 'argon2'
 import { ExceptionService } from 'src/exception/exception.service'
 import { PrismaService } from 'src/prisma.service'
 import { CreateUserDto } from './dto/create-user.dto'
@@ -22,7 +23,7 @@ export class UserService {
 			email
 		}
 
-		if (await this.findUnique(userUnique, false))
+		if (await this.findUnique(userUnique))
 			this.exceptionService.badRequestException(this.userExistMessage)
 
 		return this.prisma.user.create({
@@ -30,19 +31,20 @@ export class UserService {
 				id,
 				username,
 				email,
-				password,
+				password: await hash(password),
 				profile: {
-					connectOrCreate: {
-						create: {
-							role
-						},
-						where: {
-							userId: id
-						}
+					create: {
+						role
 					}
 				}
 			},
-			include: {
+			select: {
+				id: true,
+				email: true,
+				username: true,
+				password: false,
+				createdAt: true,
+				updatedAt: true,
 				profile: true
 			}
 		})
@@ -54,23 +56,17 @@ export class UserService {
 
 	async findUnique(
 		where: Prisma.UserWhereUniqueInput,
-		withExistChecking = true,
 		include?: Prisma.UserInclude
 	) {
-		const user = await this.prisma.user.findUnique({
+		return this.prisma.user.findUnique({
 			where,
 			include
 		})
-
-		if (withExistChecking && !user)
-			this.exceptionService.notFoundException(this.userNotFoundMessage)
-
-		return user
 	}
 
 	async findFirst(
 		where: Prisma.UserWhereInput,
-		withExistChecking = true,
+		withChecking = true,
 		include?: Prisma.UserInclude
 	) {
 		const user = await this.prisma.user.findFirst({
@@ -78,7 +74,7 @@ export class UserService {
 			include
 		})
 
-		if (withExistChecking && !user)
+		if (withChecking && !user)
 			this.exceptionService.notFoundException(this.userNotFoundMessage)
 
 		return user
