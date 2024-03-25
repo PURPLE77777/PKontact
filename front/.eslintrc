@@ -6,8 +6,10 @@
 	},
 	"extends": [
 		"eslint:recommended",
+		// "plugin:react/recommended",
+		// "plugin:@tanstack/eslint-plugin-query/recommended",
+		"plugin:@typescript-eslint/eslint-recommended",
 		"plugin:@typescript-eslint/recommended",
-		"plugin:react/recommended",
 		"plugin:react/jsx-runtime"
 	],
 	"parser": "@typescript-eslint/parser",
@@ -15,11 +17,17 @@
 		"ecmaVersion": "latest",
 		"sourceType": "module"
 	},
-	"plugins": ["@typescript-eslint", "react", "unused-imports"],
+	"plugins": [
+		"@tanstack/query",
+		"react",
+		"unused-imports",
+		"@typescript-eslint"
+	],
 	"rules": {
-		"no-unused-vars": "warn",
+		// "no-unused-vars": "warn",
 		"@typescript-eslint/no-unused-vars": "warn",
-		"no-empty-function": "warn",
+		// "no-empty-function": "warn",
+		"no-empty-pattern": "warn",
 		"@typescript-eslint/no-empty-function": "warn",
 		"@typescript-eslint/no-empty-interface": "warn",
 		"@typescript-eslint/no-explicit-any": "warn",
@@ -29,6 +37,10 @@
 		"no-empty": "warn",
 		"unused-imports/no-unused-imports": "warn",
 		"prefer-const": "warn",
-		"eqeqeq": "warn"
+		"eqeqeq": "warn",
+		"@tanstack/query/exhaustive-deps": "error",
+		"@tanstack/query/no-rest-destructuring": "warn",
+		"@tanstack/query/stable-query-client": "error",
+		"no-unreachable": "warn"
 	}
 }

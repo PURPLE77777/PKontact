@@ -2,10 +2,6 @@ module.exports = function (api) {
 	api.cache(true)
 	return {
 		presets: ['babel-preset-expo'],
-		assumptions: {
-			setPublicClassFields: false,
-			privateFieldsAsSymbols: true
-		},
 		plugins: [
 			[
 				'babel-plugin-root-import',
@@ -61,7 +57,8 @@ module.exports = function (api) {
 						}
 					]
 				}
-			]
+			],
+			'react-native-reanimated/plugin'
 		]
 	}
 }
