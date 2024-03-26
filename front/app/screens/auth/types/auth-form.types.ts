@@ -5,26 +5,25 @@ const passwordSchema = z.string().min(8).max(24),
 	usernameSchema = z.string().min(5).max(32),
 	emailUsernameSchema = z.union([emailSchema, usernameSchema])
 
-export const AuthFormSchema = z.object({
+export const SignInFormSchema = z.object({
 	username: passwordSchema,
 	email: emailSchema,
 	password: passwordSchema
 })
-export const SignInSchema = z.object({
+
+export const LogInFormSchema = z.object({
 	emailUsername: emailUsernameSchema,
 	password: passwordSchema
 })
 
-export type AuthFormType = z.infer<typeof AuthFormSchema>
+export type SignInFormType = z.infer<typeof SignInFormSchema>
 
-export type SignInType = z.infer<typeof SignInSchema>
+export type LogInFormType = z.infer<typeof LogInFormSchema>
 
-export type AuthLogInType = 'auth' | 'login'
+export type ActiveAuthFormType = 'auth' | 'login'
 
 export type KeyArray<T> = Array<keyof T>
 
-export type SignInOrAuthFormKeyArrays =
-	| KeyArray<SignInType>
-	| KeyArray<AuthFormType>
+export type FormsTypes = SignInFormType | LogInFormType
 
-export type FormsTypes = AuthFormType | SignInType
+export type LogInOrSignInFormKeyArrays<T extends FormsTypes> = Array<keyof T>

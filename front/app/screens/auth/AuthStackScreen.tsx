@@ -4,7 +4,7 @@ import { useState } from 'react'
 
 import { MainStackParamList } from '@navigation/navigators/mainstack/mainstack.types'
 
-import AuthForm from './components/AuthForm'
+import SignInForm from './components/SignInForm'
 import {
 	AuthContainer,
 	AuthHeaderWrapper,
@@ -13,12 +13,12 @@ import {
 	Logo,
 	LogoText
 } from './components/styled'
-import { AuthLogInType } from './types/auth-form.types'
+import { ActiveAuthFormType } from './types/auth-form.types'
 
 type AuthScreenProps = StackScreenProps<MainStackParamList, 'Auth'>
 
 const AuthStackScreen = observer(({ route, navigation }: AuthScreenProps) => {
-	const [formType, setFormType] = useState<AuthLogInType>('auth')
+	const [formType, setFormType] = useState<ActiveAuthFormType>('auth')
 
 	return (
 		<AuthContainer>
@@ -33,7 +33,7 @@ const AuthStackScreen = observer(({ route, navigation }: AuthScreenProps) => {
 					</HeaderContainer>
 				</AuthHeaderWrapper>
 
-				<AuthForm />
+				<SignInForm />
 			</FormContainer>
 		</AuthContainer>
 	)

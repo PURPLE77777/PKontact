@@ -1,6 +1,11 @@
-import { AuthFormType, SignInType } from '@screens/auth/types/auth-form.types'
+import {
+	LogInFormType,
+	SignInFormType
+} from '@screens/auth/types/auth-form.types'
 
 import { sleep } from '@api/sleep'
+
+import { AuthResponse } from './types/auth.types'
 
 export class AuthService {
 	async checkAuth() {
@@ -23,14 +28,14 @@ export class AuthService {
 		// return data
 	}
 
-	async signIn(data: AuthFormType) {
+	async signIn(data: SignInFormType): Promise<AuthResponse> {
 		await sleep(5000)
-		return true
+		return { result: Math.random() > 0.4 } as AuthResponse
 	}
 
-	async logIn(data: SignInType) {
+	async logIn(data: LogInFormType): Promise<AuthResponse> {
 		await sleep(5000)
-		return true
+		return { result: Math.random() > 0.4 } as AuthResponse
 	}
 }
 

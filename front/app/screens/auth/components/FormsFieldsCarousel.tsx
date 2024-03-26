@@ -1,20 +1,23 @@
 import { MutableRefObject } from 'react'
-import { Control, FieldErrors, FieldValues, Path } from 'react-hook-form'
+import { Control, FieldError, FieldErrors, Path } from 'react-hook-form'
 import { useWindowDimensions } from 'react-native'
 import Carousel, { ICarouselInstance } from 'react-native-reanimated-carousel'
 
 import FormField from '@ui/formfield/FormField'
 
-import { FormsTypes, SignInOrAuthFormKeyArrays } from '../types/auth-form.types'
+import {
+	FormsTypes,
+	LogInOrSignInFormKeyArrays
+} from '../types/auth-form.types'
 
 import { CarouselWrapper } from './styled'
 
-type FormsFieldsCarouselProps<T extends FieldValues> = {
+type FormsFieldsCarouselProps<T extends FormsTypes> = {
 	control: Control<T>
 	errors: FieldErrors<T>
 	placeHolders: Record<keyof T, string>
 	carouselRef: MutableRefObject<ICarouselInstance | null>
-	fieldNames: SignInOrAuthFormKeyArrays
+	fieldNames: LogInOrSignInFormKeyArrays<T>
 	errorTextShow: boolean
 }
 
@@ -48,7 +51,7 @@ const FormsFieldsCarousel = <T extends FormsTypes>({
 						key={index}
 						name={item as Path<T>}
 						control={control}
-						error={errors[item]}
+						error={errors[item as string] as FieldError}
 						placeholder={placeHolders?.[item]}
 						errorTextShow={errorTextShow}
 					/>
