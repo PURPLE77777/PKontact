@@ -51,8 +51,12 @@ export const CarouselWrapper = styled.View`
 //////////
 
 // FormsSwitcher
-export const SignInWrapper = styled.View`
+export const FormSwitcherWrapper = styled.View`
 	padding: 0px 10px;
+`
+
+export const SwitcherText = styled(StyledText)`
+	color: ${({ theme }) => theme.colors.focus};
 `
 //////////
 

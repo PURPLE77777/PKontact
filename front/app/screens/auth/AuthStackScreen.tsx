@@ -1,10 +1,9 @@
 import { StackScreenProps } from '@react-navigation/stack'
 import { observer } from 'mobx-react-lite'
-import { useState } from 'react'
 
 import { MainStackParamList } from '@navigation/navigators/mainstack/mainstack.types'
 
-import SignInForm from './components/SignInForm'
+import FormsSwitcher from './components/FormsSwitcher'
 import {
 	AuthContainer,
 	AuthHeaderWrapper,
@@ -13,13 +12,10 @@ import {
 	Logo,
 	LogoText
 } from './components/styled'
-import { ActiveAuthFormType } from './types/auth-form.types'
 
 type AuthScreenProps = StackScreenProps<MainStackParamList, 'Auth'>
 
 const AuthStackScreen = observer(({ route, navigation }: AuthScreenProps) => {
-	const [formType, setFormType] = useState<ActiveAuthFormType>('auth')
-
 	return (
 		<AuthContainer>
 			<FormContainer>
@@ -33,7 +29,7 @@ const AuthStackScreen = observer(({ route, navigation }: AuthScreenProps) => {
 					</HeaderContainer>
 				</AuthHeaderWrapper>
 
-				<SignInForm />
+				<FormsSwitcher />
 			</FormContainer>
 		</AuthContainer>
 	)

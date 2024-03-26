@@ -20,8 +20,6 @@ export type SignInFormType = z.infer<typeof SignInFormSchema>
 
 export type LogInFormType = z.infer<typeof LogInFormSchema>
 
-export type ActiveAuthFormType = 'auth' | 'login'
-
 export type KeyArray<T> = Array<keyof T>
 
 export type FormsTypes = SignInFormType | LogInFormType

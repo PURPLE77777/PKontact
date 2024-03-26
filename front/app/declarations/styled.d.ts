@@ -10,8 +10,8 @@ declare module 'styled-components/native' {
 			bgLayout: string
 			bgContainer: string
 			bgElement: string
-			focusBorder: string
-			blurBorder: string
+			focus: string
+			blur: string
 			buttonPrimaryForeground: string
 		}
 	}

@@ -1,19 +1,22 @@
-import { Dispatch, SetStateAction } from 'react'
-import { Text } from 'react-native'
+import { useState } from 'react'
+import { TouchableOpacity } from 'react-native-gesture-handler'
 
-import { AuthLogInType } from '../types/auth-form.types'
+import LogInForm from './LogInForm'
+import SignInForm from './SignInForm'
+import { FormSwitcherWrapper, SwitcherText } from './styled'
 
-import { SignInWrapper } from './styled'
-
-type FormsSwitcherType = {
-	setFormType: Dispatch<SetStateAction<AuthLogInType>>
-}
-
-const FormsSwitcher = ({ setFormType }: FormsSwitcherType) => {
+const FormsSwitcher = () => {
+	const [isLogInForm, setIsLogInForm] = useState(true)
 	return (
-		<SignInWrapper>
-			<Text>FormsSwitcher</Text>
-		</SignInWrapper>
+		<>
+			{isLogInForm ? <LogInForm /> : <SignInForm />}
+
+			<FormSwitcherWrapper>
+				<TouchableOpacity onPress={() => setIsLogInForm(!isLogInForm)}>
+					<SwitcherText>{isLogInForm ? 'Sign in' : 'Log in'}</SwitcherText>
+				</TouchableOpacity>
+			</FormSwitcherWrapper>
+		</>
 	)
 }
 
