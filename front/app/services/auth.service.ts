@@ -1,4 +1,4 @@
-import { AuthForm } from '@screens/auth/types/auth-form.types'
+import { AuthFormType, SignInType } from '@screens/auth/types/auth-form.types'
 
 import { sleep } from '@api/sleep'
 
@@ -23,7 +23,12 @@ export class AuthService {
 		// return data
 	}
 
-	async signIn(data: AuthForm) {
+	async signIn(data: AuthFormType) {
+		await sleep(5000)
+		return true
+	}
+
+	async logIn(data: SignInType) {
 		await sleep(5000)
 		return true
 	}

@@ -1,32 +1,33 @@
 import { MutableRefObject } from 'react'
-import { Control, FieldErrors, FieldValues } from 'react-hook-form'
+import { Control, FieldErrors, FieldValues, Path } from 'react-hook-form'
 import { useWindowDimensions } from 'react-native'
 import Carousel, { ICarouselInstance } from 'react-native-reanimated-carousel'
 
 import FormField from '@ui/formfield/FormField'
 
-import { AuthForm } from '../types/auth-form.types'
+import { FormsTypes, SignInOrAuthFormKeyArrays } from '../types/auth-form.types'
 
 import { CarouselWrapper } from './styled'
 
-type AuthFieldsCarouselProps<T extends FieldValues> = {
+type FormsFieldsCarouselProps<T extends FieldValues> = {
 	control: Control<T>
 	errors: FieldErrors<T>
 	placeHolders: Record<keyof T, string>
 	carouselRef: MutableRefObject<ICarouselInstance | null>
-	fieldNames: (keyof T)[]
-	errorTextShow
+	fieldNames: SignInOrAuthFormKeyArrays
+	errorTextShow: boolean
 }
 
-const AuthFieldsCarousel = ({
+const FormsFieldsCarousel = <T extends FormsTypes>({
 	control,
 	errors,
 	carouselRef,
 	fieldNames,
 	placeHolders,
 	errorTextShow
-}: AuthFieldsCarouselProps<AuthForm>) => {
+}: FormsFieldsCarouselProps<T>) => {
 	const { width } = useWindowDimensions()
+
 	return (
 		<CarouselWrapper>
 			<Carousel
@@ -45,7 +46,7 @@ const AuthFieldsCarousel = ({
 				renderItem={({ index, item }) => (
 					<FormField
 						key={index}
-						name={item}
+						name={item as Path<T>}
 						control={control}
 						error={errors[item]}
 						placeholder={placeHolders?.[item]}
@@ -57,4 +58,4 @@ const AuthFieldsCarousel = ({
 	)
 }
 
-export default AuthFieldsCarousel
+export default FormsFieldsCarousel

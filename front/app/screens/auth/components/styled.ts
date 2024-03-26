@@ -50,6 +50,12 @@ export const CarouselWrapper = styled.View`
 `
 //////////
 
+// FormsSwitcher
+export const SignInWrapper = styled.View`
+	padding: 0px 10px;
+`
+//////////
+
 // ErrorText
 export const ErrorTextWrapper = styled.View`
 	margin-top: 10px;
