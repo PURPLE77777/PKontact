@@ -10,6 +10,7 @@ export type SectionsBottomTabParamList = {
 	// Feed: { sort: 'latest' | 'top' } | undefined
 }
 
+// TODO: added icons to each screen
 export type SectionsBottomTabRouteType = {
 	name: keyof SectionsBottomTabParamList
 	component: ComponentType<any>
