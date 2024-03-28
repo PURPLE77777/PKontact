@@ -3,7 +3,7 @@ import { observer } from 'mobx-react-lite'
 
 import { MainStackParamList } from '@navigation/navigators/mainstack/mainstack.types'
 
-import FormsSwitcher from './components/FormsSwitcher'
+import FormsContainer from './components/FormsContainer'
 import {
 	AuthContainer,
 	AuthHeaderWrapper,
@@ -29,7 +29,7 @@ const AuthStackScreen = observer(({ route, navigation }: AuthScreenProps) => {
 					</HeaderContainer>
 				</AuthHeaderWrapper>
 
-				<FormsSwitcher />
+				<FormsContainer />
 			</FormContainer>
 		</AuthContainer>
 	)

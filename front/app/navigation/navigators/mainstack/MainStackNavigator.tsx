@@ -1,7 +1,6 @@
 import { createStackNavigator } from '@react-navigation/stack'
 
 import AuthStackScreen from '@screens/auth/AuthStackScreen'
-import MainStackScreen from '@screens/main/MainStackScreen'
 import SplashScreen from '@screens/splash/SplashScreen'
 
 import { MainStackParamList, MainStackRouteType } from './mainstack.types'
@@ -9,10 +8,6 @@ import { MainStackParamList, MainStackRouteType } from './mainstack.types'
 const Stack = createStackNavigator<MainStackParamList>()
 
 const mainStackRoutes: MainStackRouteType[] = [
-	{
-		name: 'Main',
-		component: MainStackScreen
-	},
 	{
 		name: 'Auth',
 		component: AuthStackScreen

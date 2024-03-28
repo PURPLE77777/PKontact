@@ -14,8 +14,10 @@ import { useStore } from '@hooks/useStore'
 import { useCountRef } from '@utils/refs/count.ref'
 
 import {
+	FormsSetterType,
 	FormsTypes,
-	LogInOrSignInFormKeyArrays
+	LogInOrSignInFormKeyArray,
+	SwitcherTexts
 } from '../types/auth-form.types'
 import {
 	checkSubmitBtn,
@@ -25,6 +27,7 @@ import {
 
 import AuthLoader from './AuthHeader'
 import FormsFieldsCarousel from './FormsFieldsCarousel'
+import FormsSwitcher from './FormsSwitcher'
 import {
 	AuthWelcomeText,
 	ErrorTextSubmit,
@@ -35,7 +38,7 @@ import {
 } from './styled'
 
 type FormsStatesType<T extends FormsTypes> = {
-	fieldNames: LogInOrSignInFormKeyArrays<T>
+	fieldNames: LogInOrSignInFormKeyArray<T>
 	placeHolders: Record<keyof T, string>
 	schema: z.AnyZodObject
 	submitFn: (data: T) => Promise<AuthResponse>
@@ -49,8 +52,11 @@ const AuthFormCarousel = <T extends FormsTypes>({
 	schema,
 	submitFn,
 	welcomeText,
-	defaults
-}: FormsStatesType<T>) => {
+	defaults,
+	switcherText,
+	switcherPreBtnText,
+	setIsLogInForm
+}: FormsStatesType<T> & FormsSetterType & SwitcherTexts) => {
 	const {
 		control,
 		handleSubmit,
@@ -157,6 +163,14 @@ const AuthFormCarousel = <T extends FormsTypes>({
 			)}
 
 			{authResult && <AuthWelcomeText>{welcomeText}</AuthWelcomeText>}
+
+			{!(isPending || authResult) && (
+				<FormsSwitcher
+					switcherText={switcherText}
+					switcherPreBtnText={switcherPreBtnText}
+					setIsLogInForm={setIsLogInForm}
+				/>
+			)}
 		</>
 	)
 }

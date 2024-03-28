@@ -1,3 +1,4 @@
+import { Dispatch, SetStateAction } from 'react'
 import { z } from 'zod'
 
 const passwordSchema = z.string().min(8).max(24),
@@ -24,4 +25,15 @@ export type KeyArray<T> = Array<keyof T>
 
 export type FormsTypes = SignInFormType | LogInFormType
 
-export type LogInOrSignInFormKeyArrays<T extends FormsTypes> = Array<keyof T>
+export type LogInOrSignInFormKeyArray<T extends FormsTypes> = Array<keyof T>
+
+export type SwitcherTexts = {
+	switcherText: string
+	switcherPreBtnText: string
+}
+
+export type FormsSetterType = {
+	setIsLogInForm: Dispatch<SetStateAction<boolean>>
+}
+
+export type FormSwitcherType = SwitcherTexts & FormsSetterType

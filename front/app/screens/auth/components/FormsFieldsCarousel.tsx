@@ -5,10 +5,7 @@ import Carousel, { ICarouselInstance } from 'react-native-reanimated-carousel'
 
 import FormField from '@ui/formfield/FormField'
 
-import {
-	FormsTypes,
-	LogInOrSignInFormKeyArrays
-} from '../types/auth-form.types'
+import { FormsTypes, LogInOrSignInFormKeyArray } from '../types/auth-form.types'
 
 import { CarouselWrapper } from './styled'
 
@@ -17,7 +14,7 @@ type FormsFieldsCarouselProps<T extends FormsTypes> = {
 	errors: FieldErrors<T>
 	placeHolders: Record<keyof T, string>
 	carouselRef: MutableRefObject<ICarouselInstance | null>
-	fieldNames: LogInOrSignInFormKeyArrays<T>
+	fieldNames: LogInOrSignInFormKeyArray<T>
 	errorTextShow: boolean
 }
 
@@ -36,9 +33,7 @@ const FormsFieldsCarousel = <T extends FormsTypes>({
 			<Carousel
 				ref={carouselRef}
 				data={fieldNames}
-				// style={{ backgroundColor: 'rgba(55,55,55,0.5)' }}
 				width={width - 80}
-				// height={80}
 				mode='parallax'
 				modeConfig={{
 					parallaxScrollingScale: 1,

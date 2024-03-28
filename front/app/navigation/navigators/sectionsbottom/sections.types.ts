@@ -1,14 +1,16 @@
 import { ComponentType } from 'react'
 
 export type SectionsBottomTabParamList = {
-	Chats: undefined
 	Home: undefined
-
+	Hub: undefined
+	Messenger: undefined
+	Clips: undefined
+	Music: undefined
 	// Profile: { userId: string }
 	// Feed: { sort: 'latest' | 'top' } | undefined
 }
 
 export type SectionsBottomTabRouteType = {
 	name: keyof SectionsBottomTabParamList
-	component: ComponentType
+	component: ComponentType<any>
 }
