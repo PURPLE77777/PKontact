@@ -50,6 +50,28 @@ export const CarouselWrapper = styled.View`
 `
 //////////
 
+// FormsSwitcher
+export const FormSwitcherWrapper = styled.View`
+	padding: 0px 10px;
+	margin-top: 20px;
+	align-items: center;
+	flex-direction: row;
+`
+
+export const SwitcherPreBtnText = styled(StyledText)`
+	color: ${({ theme }) => theme.colors.textPrimary};
+`
+
+export const SwitcherBtn = styled.TouchableOpacity`
+	flex-direction: row;
+	margin-left: 10px;
+`
+
+export const SwitcherText = styled(StyledText)`
+	color: ${({ theme }) => theme.colors.focus};
+`
+//////////
+
 // ErrorText
 export const ErrorTextWrapper = styled.View`
 	margin-top: 10px;

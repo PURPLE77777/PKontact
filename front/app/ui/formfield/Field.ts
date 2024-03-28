@@ -14,7 +14,7 @@ export const Field = styled.TextInput<FieldType>`
 	flex: 1;
 	font-size: 20px;
 	border-color: ${({ theme, focus }) =>
-		focus ? theme.colors.focusBorder : theme.colors.blurBorder};
+		focus ? theme.colors.focus : theme.colors.blur};
 	background-color: ${({ theme }) => theme.colors.bgElement};
 `
 

@@ -9,8 +9,8 @@ export const darkTheme: DefaultTheme = {
 		bgLayout: '#19191a',
 		bgContainer: '#222222',
 		bgElement: '#232324',
-		focusBorder: '#529ef4',
-		blurBorder: 'hsla(0,0%,100%,0.24)',
+		focus: '#529ef4',
+		blur: 'hsla(0,0%,100%,0.24)',
 		buttonPrimaryForeground: '#e2e4e7'
 	}
 }
@@ -24,8 +24,8 @@ export const lightTheme: DefaultTheme = {
 		bgLayout: '#19191a',
 		bgContainer: '#222222',
 		bgElement: '#232324',
-		focusBorder: '#529ef4',
-		blurBorder: 'hsla(0,0%,100%,0.24)',
+		focus: '#529ef4',
+		blur: 'hsla(0,0%,100%,0.24)',
 		buttonPrimaryForeground: '#e2e4e7'
 	}
 }

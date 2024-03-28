@@ -5,4 +5,7 @@ type Tokens = {
 	refreshToken: string
 }
 
-export type AuthResponse = User & Tokens
+export type AuthResponse = User &
+	Tokens & {
+		result: boolean
+	}
