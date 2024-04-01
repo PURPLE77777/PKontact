@@ -54,6 +54,7 @@ const SectionsBottomTabNavigator = () => {
 	return (
 		<Tab.Navigator initialRouteName='Home'>
 			{sectionsBottomTabRoutes.map(({ name, component }) => (
+				// TODO: added icons to each screen
 				<Tab.Screen key={name} name={name} component={component} />
 			))}
 		</Tab.Navigator>
