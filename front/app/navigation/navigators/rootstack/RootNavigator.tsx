@@ -3,6 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 import { useQuery } from '@tanstack/react-query'
 import { useEffect, useRef } from 'react'
 
+import { rootService } from '@services/root.service'
 
 import { useFonts } from '@hooks/useFonts'
 import { useStore } from '@hooks/useStore'
@@ -10,7 +11,6 @@ import { useStore } from '@hooks/useStore'
 import MainStackNavigator from '../mainstack/MainStackNavigator'
 import SectionsBottomTabNavigator from '../sectionsbottom/SectionsBottomTabNavigator'
 
-import { rootService } from '@services/root.service'
 import {
 	RootNavigationProp,
 	RootStackParamList,
@@ -48,11 +48,11 @@ const RootNavigator = () => {
 	const navigateByAccessToken = () => {
 		tokenStore.accessToken
 			? navigate('MainSections', {
-				screen: 'Home'
-			})
+					screen: 'Home'
+				})
 			: navigate('MainStack', {
-				screen: 'Auth'
-			})
+					screen: 'Auth'
+				})
 	}
 
 	useEffect(() => {

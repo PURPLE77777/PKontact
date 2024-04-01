@@ -1,5 +1,7 @@
 import { ComponentType } from 'react'
 
+import { IconsType } from '@ui/icon/icon.type'
+
 export type SectionsBottomTabParamList = {
 	Home: undefined
 	Hub: undefined
@@ -13,4 +15,5 @@ export type SectionsBottomTabParamList = {
 export type SectionsBottomTabRouteType = {
 	name: keyof SectionsBottomTabParamList
 	component: ComponentType<any>
+	iconName: IconsType
 }
