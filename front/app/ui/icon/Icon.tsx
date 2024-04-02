@@ -8,37 +8,98 @@ import {
 	Ionicons,
 	MaterialCommunityIcons
 } from '@expo/vector-icons'
+import { ReactElement } from 'react'
 
-import { IconsFamilyEnum, IconsFamilyType, IconsType } from './icon.type'
+import { FamiliesType, FamilyIconNameType } from './icon.type'
 
-type IconPropsType = {
-	family: IconsFamilyType
-	name: IconsType
+type IconPropsType<T extends FamiliesType> = {
+	family: T
+	name: FamilyIconNameType<T>
 	size: number
 	color: string
 }
 
-const IconElement = ({ family, ...iconProps }: IconPropsType) => {
-	switch (family) {
-		case IconsFamilyEnum.ANTDESIGN:
-			return <AntDesign {...iconProps} />
-		case IconsFamilyEnum.ENTYPO:
-			return <Entypo />
-		case IconsFamilyEnum.FONTAWESOME:
-			return <FontAwesome />
-		case IconsFamilyEnum.FONTAWESOME5:
-			return <FontAwesome5 />
-		case IconsFamilyEnum.FONTISTO:
-			return <Fontisto />
-		case IconsFamilyEnum.FOUNDATION:
-			return <Foundation />
-		case IconsFamilyEnum.IONICONS:
-			return <Ionicons />
-		case IconsFamilyEnum.MATERIALCOMMUNITYICONS:
-			return <MaterialCommunityIcons />
-		default:
-			;<FontAwesome5 />
+const Icon = <T extends FamiliesType>({
+	family,
+	name,
+	size,
+	color
+}: IconPropsType<T>) => {
+	const unknownIcon = (
+		<FontAwesome5
+			name={name as keyof typeof FontAwesome5.glyphMap}
+			size={size}
+			color={color}
+		/>
+	)
+
+	const iconsByFamily: Partial<Record<FamiliesType, ReactElement>> = {
+		AntDesign: (
+			<AntDesign
+				name={name as keyof typeof AntDesign.glyphMap}
+				size={size}
+				color={color}
+			/>
+		),
+		Entypo: (
+			<Entypo
+				name={name as keyof typeof Entypo.glyphMap}
+				size={size}
+				color={color}
+			/>
+		),
+		FontAwesome: (
+			<FontAwesome
+				name={name as keyof typeof FontAwesome.glyphMap}
+				size={size}
+				color={color}
+			/>
+		),
+		FontAwesome5: (
+			<FontAwesome5
+				name={name as keyof typeof FontAwesome.glyphMap}
+				size={size}
+				color={color}
+			/>
+		),
+		Fontisto: (
+			<Fontisto
+				name={name as keyof typeof Fontisto.glyphMap}
+				size={size}
+				color={color}
+			/>
+		),
+		Foundation: (
+			<Foundation
+				name={name as keyof typeof Foundation.glyphMap}
+				size={size}
+				color={color}
+			/>
+		),
+		Ionicons: (
+			<Ionicons
+				name={name as keyof typeof Ionicons.glyphMap}
+				size={size}
+				color={color}
+			/>
+		),
+		MaterialCommunityIcons: (
+			<MaterialCommunityIcons
+				name={name as keyof typeof MaterialCommunityIcons.glyphMap}
+				size={size}
+				color={color}
+			/>
+		)
+		// EvilIcons: unknownIcon,
+		// Feather: unknownIcon,
+		// FontAwesome6: unknownIcon,
+		// MaterialIcons: unknownIcon,
+		// Octicons: unknownIcon,
+		// SimpleLineIcons: unknownIcon,
+		// Zocial: unknownIcon
 	}
+
+	return iconsByFamily[family] || unknownIcon
 }
 
-export default IconElement
+export default Icon

@@ -1,35 +1,57 @@
-import { AntDesign, MaterialCommunityIcons } from '@expo/vector-icons'
 import * as Families from '@expo/vector-icons'
+import {
+	AntDesign,
+	Entypo,
+	Feather,
+	FontAwesome,
+	Fontisto,
+	Foundation,
+	Ionicons,
+	MaterialCommunityIcons
+} from '@expo/vector-icons'
 
-type MaterialCommunityIconsGlyph = keyof typeof MaterialCommunityIcons.glyphMap
+type AntDesignGlyphMap = keyof typeof AntDesign.glyphMap
+type MaterialCommunityIconsGlyphMap =
+	keyof typeof MaterialCommunityIcons.glyphMap
+type IoniconsGlyphMap = keyof typeof Ionicons.glyphMap
+type FontAwesomeGlyphMap = keyof typeof FontAwesome.glyphMap
+type FoundationGlyphMap = keyof typeof Foundation.glyphMap
+type EntypoGlyphMap = keyof typeof Entypo.glyphMap
+type FontistoGlyphMap = keyof typeof Fontisto.glyphMap
+type FeatherGlyphMap = keyof typeof Feather.glyphMap
 
-type FamiliesType = keyof typeof Families
+export type FamiliesType = Exclude<
+	keyof typeof Families,
+	| 'createIconSet'
+	| 'createIconSetFromIcoMoon'
+	| 'createMultiStyleIconSet'
+	| 'createIconSetFromFontello'
+>
+export type FamilyType<T extends FamiliesType> = T
 
-// export type IconsFamilyType =
-// 	| keyof typeof MaterialCommunityIcons.glyphMap
-// 	| keyof typeof Ionicons.glyphMap
-// 	| keyof typeof FontAwesome.glyphMap
-// 	| keyof typeof AntDesign.glyphMap
-// 	| keyof typeof Foundation.glyphMap
-// 	| keyof typeof Entypo.glyphMap
-// 	| keyof typeof FontAwesome5.glyphMap
-// 	| keyof typeof Fontisto.glyphMap
-export type IconsFamilyType<T extends FamiliesType> =
+export type IconNamesType =
+	| MaterialCommunityIconsGlyphMap
+	| IoniconsGlyphMap
+	| FontAwesomeGlyphMap
+	| AntDesignGlyphMap
+	| FoundationGlyphMap
+	| EntypoGlyphMap
+	| FontistoGlyphMap
+	| FeatherGlyphMap
+export type FamilyIconNameType<T extends FamiliesType> =
 	keyof (typeof Families)[T]['glyphMap']
 
 export enum IconsFamilyEnum {
 	ANTDESIGN = 'AntDesign',
 	ENTYPO = 'Entypo',
 	FONTAWESOME = 'FontAwesome',
-	FONTAWESOME5 = 'FontAwesome5',
 	FONTISTO = 'Fontisto',
 	FOUNDATION = 'Foundation',
 	IONICONS = 'Ionicons',
-	MATERIALCOMMUNITYICONS = 'MaterialCommunityIcons'
+	MATERIALCOMMUNITYICONS = 'MaterialCommunityIcons',
+	FEATHER = 'Feather'
 }
 
-const vfsv: IconsFamilyType<'AntDesign'> = 'bells'
-vfsv
 // export type iconsGlyphs = {
 // 	[index in IconsFamilyEnum]: IconsFamilyType
 // }
@@ -37,9 +59,3 @@ vfsv
 // const icon: iconsGlyphs = {
 // 	AntDesign: 'areachart'
 // }
-
-export type AntDesignType = keyof typeof AntDesign.glyphMap
-export type MaterialCommunityIconsType =
-	keyof typeof MaterialCommunityIcons.glyphMap
-
-export type IconsType = AntDesignType | MaterialCommunityIconsType
